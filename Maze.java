@@ -26,6 +26,13 @@ public class Maze{
 
     public Maze(String filename) throws FileNotFoundException{
         //COMPLETE CONSTRUCTOR
+        int row, col;
+        File f = new File(filename);
+        Scanner in = new Scanner(f);
+	      while(in.hasNext()){
+          //wordsToAdd.add(in.nextLine().toUpperCase());
+	      }
+        in.close();
     }
 
 
