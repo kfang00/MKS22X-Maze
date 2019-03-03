@@ -32,23 +32,23 @@ public class Maze{
 	int s = 0;
 	int hold = 0;
 	animate = false;
-	String s = "";
+	String st = "";
         File f = new File(filename);
-        Scanner in = new Scanner(f);
+        Scanner in = new Scanner(f); 
 	while(in.hasNext()){
 		row += 1;
 		col = in.nextLine().length();
-		s += in.nextLine();
+		st += in.nextLine();
 	}
 	maze = new char[row][col];
         in.close();
         for (int a = 0; a < maze.length; a++) {
 		for (int b = 0; b < maze[0].length; b++) {
-			maze[a][b] = s.charAt(hold);
-			if (maze[a][b] == 'E') {
+			maze[a][b] = st.charAt(hold); //placing file into maze
+			if (maze[a][b] == 'E') { //counting Es
 				e++;
 			}
-			if (maze[a][b] == 'S') {
+			if (maze[a][b] == 'S') { //counting Ss
 				s++;
 			}
 			hold++;
@@ -119,6 +119,7 @@ public class Maze{
             //and start solving at the location of the s.
 
             //return solve(???,???);
+	return 0;
 
     }
 
