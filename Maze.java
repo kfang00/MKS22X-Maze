@@ -131,7 +131,7 @@ public class Maze{
 	}
             //and start solving at the location of the s.
             //return solve(???,???);
-	return solve(r, c);
+	return solve(r, c, 0);
     }
 
     /*
@@ -151,7 +151,7 @@ public class Maze{
 
         All visited spots that are part of the solution are changed to '@'
     */
-    private int solve(int row, int col, count){ //you can add more parameters since this is private
+    private int solve(int row, int col, int count){ //you can add more parameters since this is private
 
         //automatic animation! You are welcome.
         if(animate){
@@ -163,20 +163,20 @@ public class Maze{
         }
 
         //COMPLETE SOLVE
-	if (maze[a][b] == 'E') {
+	if (maze[row][col] == 'E') {
 		return count; //reached the end
 	}
-	if ((maze[a][b] == '@') || (maze[a][b] == '#') || (maze[a][b] == '.')) { //places you cannot move
+	if ((maze[row][col] == '@') || (maze[row][col] == '#') || (maze[row][col] == '.')) { //places you cannot move
 		return -1; 
 	}
-	maze[a][b] = '@'; //if it's an open space then place @
+	maze[row][col] = '@'; //if it's an open space then place @
 	int[][] move = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}}; //looping through four possible moves
 	for (int a = 0; a < move.length; a++) {
 		if (solve(row + move[a][1], col + move[a][0], count + 1) != -1) {
 			return count; //if it does not ever return -1 before reaching the end then it will return count
 		}
 	}
-	maze[a][b] = '.'; //if it loops through all the moves without returning the count then that means that all four directions do not work and thus place a .
+	maze[row][col] = '.'; //if it loops through all the moves without returning the count then that means that all four directions do not work and thus place a .
         return -1; //so it compiles <- when all four directions do not work as well
     }
 
