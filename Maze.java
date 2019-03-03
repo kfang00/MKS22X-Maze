@@ -26,13 +26,37 @@ public class Maze{
 
     public Maze(String filename) throws FileNotFoundException{
         //COMPLETE CONSTRUCTOR
-        int row, col;
+        int row = 0;
+	int col = 0;
+	int e = 0;
+	int s = 0;
+	int hold = 0;
+	animate = false;
+	String s = "";
         File f = new File(filename);
         Scanner in = new Scanner(f);
-	      while(in.hasNext()){
-          //wordsToAdd.add(in.nextLine().toUpperCase());
-	      }
+	while(in.hasNext()){
+		row += 1;
+		col = in.nextLine().length();
+		s += in.nextLine();
+	}
+	maze = new char[row][col];
         in.close();
+        for (int a = 0; a < maze.length; a++) {
+		for (int b = 0; b < maze[0].length; b++) {
+			maze[a][b] = s.charAt(hold);
+			if (maze[a][b] == 'E') {
+				e++;
+			}
+			if (maze[a][b] == 'S') {
+				s++;
+			}
+			hold++;
+		}
+	}
+	if ((e != 1) || (s != 1)) {
+		throw new IllegalStateException();
+	}
     }
 
 
