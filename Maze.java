@@ -151,8 +151,7 @@ public class Maze{
 
         All visited spots that are part of the solution are changed to '@'
     */
-    private int solve(int row, int col){ //you can add more parameters since this is private
-
+    private int solve(int row, int col, count){ //you can add more parameters since this is private
 
         //automatic animation! You are welcome.
         if(animate){
@@ -164,9 +163,23 @@ public class Maze{
         }
 
         //COMPLETE SOLVE
+	if (maze[a][b] == 'E') {
+		return count; //reached the end
+	}
+	if ((maze[a][b] == '@') || (maze[a][b] == '#') || (maze[a][b] == '.')) { //places you cannot move
+		return -1; 
+	}
+	maze[a][b] = '@'; //if it's an open space then place @
+	int[][] move = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}}; //looping through four possible moves
+	for (int a = 0; a < move.length; a++) {
+		return solve(row + move[a][1], col + move[a][0], count + 1);
+	}
+	}
+	
 
         return -1; //so it compiles
     }
 
+    private 
 
 }
