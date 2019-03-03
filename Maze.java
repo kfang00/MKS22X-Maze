@@ -172,14 +172,12 @@ public class Maze{
 	maze[a][b] = '@'; //if it's an open space then place @
 	int[][] move = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}}; //looping through four possible moves
 	for (int a = 0; a < move.length; a++) {
-		return solve(row + move[a][1], col + move[a][0], count + 1);
+		if (solve(row + move[a][1], col + move[a][0], count + 1) != -1) {
+			return count; //if it does not ever return -1 before reaching the end then it will return count
+		}
 	}
-	}
-	
-
-        return -1; //so it compiles
+	maze[a][b] = '.'; //if it loops through all the moves without returning the count then that means that all four directions do not work and thus place a .
+        return -1; //so it compiles <- when all four directions do not work as well
     }
-
-    private 
 
 }
