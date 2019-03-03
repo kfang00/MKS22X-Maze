@@ -95,9 +95,14 @@ public class Maze{
 
     */
     public String toString(){
-
-            return "WRITE THIS METHOD";
-
+	String str = "";
+	for (int a = 0; a < maze.length; a++) {
+		for (int b = 0; b < maze[0].length; b++) {
+			str += "" + maze[a][b];
+		}
+		str += "\n";
+	}
+        return str;
     }
 
 
