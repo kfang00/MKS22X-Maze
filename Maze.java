@@ -31,14 +31,16 @@ public class Maze{
 	int e = 0;
 	int s = 0;
 	int hold = 0;
+	String h = "";
 	animate = false;
 	String st = "";
         File f = new File(filename);
         Scanner in = new Scanner(f); 
 	while(in.hasNext()){
+		h = in.nextLine();
 		row += 1;
-		col = in.nextLine().length();
-		st += in.nextLine();
+		col = h.length();
+		st += h;
 	}
 	maze = new char[row][col];
         in.close();
@@ -114,18 +116,22 @@ public class Maze{
 
     */
     public int solve(){
-
+	int r = 0;
+	int c = 0;
             //find the location of the S.
-
-
-            //erase the S
-
-
+	    //erase the S
+	for (int a = 0; a < maze.length; a++) {
+		for (int b = 0; b < maze[0].length; b++) {
+			if (maze[a][b] == 'S') {
+				maze[a][b] = ' ';
+				r = a;
+				c = b;
+			}
+		}
+	}
             //and start solving at the location of the s.
-
             //return solve(???,???);
-	return 0;
-
+	return solve(r, c);
     }
 
     /*
