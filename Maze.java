@@ -172,8 +172,9 @@ public class Maze{
 	maze[row][col] = '@'; //if it's an open space then place @
 	int[][] move = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}}; //looping through four possible moves
 	for (int a = 0; a < move.length; a++) {
-		if (solve(row + move[a][1], col + move[a][0], count + 1) != -1) {
-			return count; //if it does not ever return -1 before reaching the end then it will return count
+		int g = solve(row + move[a][1], col + move[a][0], count + 1);
+		if (g != -1) {
+			return g; //if it does not ever return -1 before reaching the end then it will return count
 		}
 	}
 	maze[row][col] = '.'; //if it loops through all the moves without returning the count then that means that all four directions do not work and thus place a .
